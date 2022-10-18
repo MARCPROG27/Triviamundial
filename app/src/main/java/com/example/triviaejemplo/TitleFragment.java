@@ -43,7 +43,7 @@ public class TitleFragment extends Fragment {
         // Inflate the layout for this fragment
         mBinding = FragmentTitleBinding.inflate(inflater, container,false);
         View view = mBinding.getRoot();
-
+// esto tambien lo puedo hacer en el metodo onviewCREATE ese método se instancia cuando ya esta creado el objeto
         mBinding.comenzarTriviaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +58,8 @@ public class TitleFragment extends Fragment {
 
         return  view;
     }
+
+    // instanciamos y enviamos un parametro al otro fragmento
 
     private void addLogoTriviaFragment(String name) {
         LogoTriviaFragment logoTriviaFragment = LogoTriviaFragment.newInstance(name, "");
