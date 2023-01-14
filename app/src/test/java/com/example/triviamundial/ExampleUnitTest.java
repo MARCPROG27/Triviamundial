@@ -1,4 +1,4 @@
-package com.example.triviaejemplo;
+package com.example.triviamundial;
 
 import org.junit.Test;
 

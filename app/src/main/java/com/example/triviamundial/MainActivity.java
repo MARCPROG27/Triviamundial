@@ -1,17 +1,15 @@
-package com.example.triviaejemplo;
+package com.example.triviamundial;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.view.View;
-
-import com.example.triviaejemplo.databinding.ActivityMainBinding;
-import com.example.triviaejemplo.databinding.FragmentTitleBinding;
+import com.example.triviamundial.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding  binding;
+    ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void addTitleFragment() {
-        TitleFragment titleFragment = TitleFragment.newInstance();
+        TitleFragment titleFragment = new TitleFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().add(binding.contentFragment.getId(),
                 titleFragment, TitleFragment.class.getSimpleName());

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TitleFragment">
+    tools:context="com.example.triviamundial.TitleFragment">
 
     <TextView
         android:id="@+id/welcome_tv"
@@ -14,37 +14,52 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/trivia_welcome_msg"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/name_tv"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="315dp"
+        android:layout_height="69dp"
         android:layout_marginBottom="319dp"
+        android:autofillHints=""
         android:hint="@string/write_name"
         android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#F9F7FA"
+        android:textColorHint="#FFFAFA"
         app:layout_constraintBottom_toTopOf="@+id/comenzar_trivia_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_tv"
-        android:autofillHints="" />
-
+        app:layout_constraintTop_toBottomOf="@+id/welcome_tv" />
 
     <Button
         android:id="@+id/comenzar_trivia_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FFC107"
         android:text="@string/start_btn"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_tv" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="318dp"
+        android:layout_height="354dp"
+        android:layout_marginTop="228dp"
+        android:src="@drawable/imgkatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

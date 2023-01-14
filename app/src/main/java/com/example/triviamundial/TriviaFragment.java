@@ -1,47 +1,45 @@
-package com.example.triviaejemplo;
+package com.example.triviamundial;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import com.example.triviamundial.databinding.FragmentLogoTriviaBinding;
 
-import com.example.triviaejemplo.databinding.FragmentLogoTriviaBinding;
 
-
-public class LogoTriviaFragment extends Fragment {
+public class TriviaFragment extends Fragment {
 
 
     // AGREGAR BINDING
     FragmentLogoTriviaBinding binding;
 
     private static final String ARG_PARAM1 = "param1";
+
+
     private String mParam1;
+    ;
+
     public static final int OPT_01 = 0;
     public static final int OPT_02 = 1;
     public static final int OPT_03 = 2;
     public static final int OPT_04 = 3;
 
     // VARIABLE NUMERICA PARA CAPTAR SELECCION
-    private int choice;
+    private int optionchoice;
 
-    public LogoTriviaFragment() {
-        // Required empty public constructor
+    public TriviaFragment() {
+        // Constructor Vacío
     }
 
 
-    public static LogoTriviaFragment newInstance(String param1, String param2) {
-        LogoTriviaFragment fragment = new LogoTriviaFragment();
+    public static TriviaFragment newInstance(String param1) {
+        TriviaFragment fragment = new TriviaFragment();
         Bundle args = new Bundle();
         // recibe el nombre
         args.putString(ARG_PARAM1, param1);
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +48,8 @@ public class LogoTriviaFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
             mParam1 = getArguments().getString(ARG_PARAM1);
+
 
         }
     }
@@ -63,13 +61,11 @@ public class LogoTriviaFragment extends Fragment {
         binding = FragmentLogoTriviaBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+
         // busca eN EL R EL STRING QUE GUARDAMOS Y LE ASIGNA LO QUE RECIBIMOS
         String greeting = getString(R.string.greeting, mParam1);
         binding.triviaNameTv.setText(greeting);
 
-// pertenece al contenedor de los radioButtons
-
-       // se atuo completa reemplazando hasta el RadioGroup.OnCheckedChangeListener
 
         binding.triviaRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -78,19 +74,19 @@ public class LogoTriviaFragment extends Fragment {
                 int index = binding.triviaRg.indexOfChild(radioButton);
                 switch (index) {
                     case OPT_01:
-                        choice = OPT_01;
+                        optionchoice = OPT_01;
                         break;
                     case OPT_02:
-                        choice = OPT_02;
+                        optionchoice = OPT_02;
                         break;
                     case OPT_03:
-                        choice = OPT_03;
+                        optionchoice = OPT_03;
                         break;
                     case OPT_04:
-                        choice = OPT_04;
+                        optionchoice = OPT_04;
                         break;
                     default:
-                        choice = 5;
+                        optionchoice = 5;
                         break;
                 }
 
@@ -101,11 +97,11 @@ public class LogoTriviaFragment extends Fragment {
         binding.triviaSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (choice == OPT_03) {
-                    goToWinFragment(mParam1);
+                if (optionchoice == OPT_03) {
+                    goToWin(mParam1);
                 } else {
 
-                    goToTryAgainFragment(mParam1);
+                    goToTryAgain(mParam1);
                 }
             }
         });
@@ -114,8 +110,8 @@ public class LogoTriviaFragment extends Fragment {
 
     }
 
-    private  void goToWinFragment(String name) {
-        WinFragment winFragment = WinFragment.newInstance(name, "");
+    private void goToWin(String Name) {
+        WinFragment winFragment = WinFragment.newInstance(Name);
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.addToBackStack(null).replace(R.id.content_fragment, winFragment,
                 WinFragment.class.getSimpleName());
@@ -123,15 +119,13 @@ public class LogoTriviaFragment extends Fragment {
     }
 
 
-    private void goToTryAgainFragment(String name) {
-      TryAgainFragment tryAgainFragment = TryAgainFragment.newInstance(name, "");
+    private void goToTryAgain(String Name) {
+        TryAgainFragment tryAgainFragment = TryAgainFragment.newInstance(Name);
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.addToBackStack(null).replace(R.id.content_fragment, tryAgainFragment,
                 TryAgainFragment.class.getSimpleName());
         fragmentTransaction.commit();
     }
-
-
 
 
 }
